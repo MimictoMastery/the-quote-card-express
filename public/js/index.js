@@ -1,9 +1,22 @@
-"use strict";
+async function getRandomImage() {
+    const client_id = "bouQm-gagPq2rlEzFChpoz24thWTs4Gd8nQCAIQ6F_c";
+    const endpoint = `https://api.unsplash.com/photos/random/?client_id=${client_id}`;
+    try {
+        const response = await fetch(endpoint);
+        const returnedData = await response.json()
+        console.log(returnedData)
+    } catch (error) {
+        console.error(error)
+    }
+}
 
-const elements = {
-    quote: document.getElementById("quote"),
-    author: document.getElementById("author"),
-};
+getRandomImage();
+
+
+/* const quotes = [
+
+const quoteElement = document.getElementById("quote");
+const authorElement = document.getElementById("author");
 
 const quotes = [
     {
@@ -36,4 +49,5 @@ function loopThroughQuotes() {
     }, 3000);
 }
 
-loopThroughQuotes();
+setTimeout(loopThroughQuotes, 3000);
+*/
