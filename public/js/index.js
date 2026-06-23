@@ -1,17 +1,29 @@
+"use strict";
+
+const elements = {
+    quote: document.getElementById("quote"),
+    author: document.getElementById("author"),
+};
+
 async function getRandomImage() {
-    const client_id = "bouQm-gagPq2rlEzFChpoz24thWTs4Gd8nQCAIQ6F_c";
+    const client_id = "ilBGPHL3PvtOqSkO42XYz_v54-8qFUwGQI2Hf_dCK4c";
     const endpoint = `https://api.unsplash.com/photos/random/?client_id=${client_id}`;
+
     try {
         const response = await fetch(endpoint);
-        const returnedData = await response.json()
-        console.log(returnedData)
+        const returnedData = await response.json();
+
+        const receivedPhotoUrl = returnedData.urls.regular;
+
+        const imgDiv = document.querySelector(".background-img");
+        imgDiv.style.backgroundImage = `url("${receivedPhotoUrl}")`;
+
     } catch (error) {
-        console.error(error)
+        console.error(error);
     }
 }
 
 getRandomImage();
-
 
 /* const quotes = [
 
