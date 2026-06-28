@@ -1,27 +1,25 @@
-"use strict";
+"use strict"
 
 const elements = {
     quote: document.getElementById("quote"),
     author: document.getElementById("author"),
 };
 
-async function getRandomImage() {
-    const client_id = "ilBGPHL3PvtOqSkO42XYz_v54-8qFUwGQI2Hf_dCK4c";
-    const endpoint = `https://api.unsplash.com/photos/random/?client_id=${client_id}`;
 
+async function getRandomImage() {
+    const endpoint = "http://localhost:8080/api/v1/getRandomImage";
     try {
         const response = await fetch(endpoint);
         const returnedData = await response.json();
-
-        const receivedPhotoUrl = returnedData.urls.regular;
+        const receivedPhotoUrl = returnedData.data;
 
         const imgDiv = document.querySelector(".background-img");
-        imgDiv.style.backgroundImage = `url("${receivedPhotoUrl}")`;
-
+        imgDiv.style.backgroundImage = `url(${receivedPhotoUrl})`;
     } catch (error) {
         console.error(error);
     }
 }
+
 
 getRandomImage();
 
